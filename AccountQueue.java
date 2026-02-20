@@ -48,7 +48,6 @@ public class AccountQueue {
         // your code goes here
         // if queue is not empty, remove and return one item from the front of queue
         if(!this.isEmpty()){
-            // AccountNode lead = new AccountNode(qFront.account_number, qFront.name, qFront.balance);
             AccountNode lead = qFront;
             qFront = qFront.next;
             return lead;
@@ -68,5 +67,22 @@ public class AccountQueue {
     public void reverseQueue() {
         // your code goes here
         // reverse the order of the elements in queue
+        
+        // deconstruct queue into a stack
+        AccountStack tempStack = new AccountStack();
+        AccountNode lead = qFront;
+        while(lead != null){
+            tempStack.push(new AccountNode(lead.account_number, lead.name, lead.balance));
+            lead = lead.next;
+        }
+
+        // reset queue and add stack into queue
+        qFront = null;
+        AccountNode newLead = tempStack.pop();
+        while( !tempStack.isEmpty()){
+            this.enqueue(newLead);
+            newLead = tempStack.pop();
+        }
+        this.enqueue(newLead);
     }
 }

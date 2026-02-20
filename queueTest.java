@@ -22,7 +22,7 @@ public class queueTest
         System.out.println("\nReversed queue:");
         myqueue.printQueue();
 
-        return;
+mj        return;
     }
 }
 
