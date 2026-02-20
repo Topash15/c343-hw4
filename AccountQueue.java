@@ -48,8 +48,9 @@ public class AccountQueue {
         // your code goes here
         // if queue is not empty, remove and return one item from the front of queue
         if(!this.isEmpty()){
+            // AccountNode lead = new AccountNode(qFront.account_number, qFront.name, qFront.balance);
             AccountNode lead = qFront;
-            qFront.next = qFront;
+            qFront = qFront.next;
             return lead;
         }
         // else return null;
